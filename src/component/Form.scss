@@ -1,0 +1,82 @@
+.form-wrapper {
+    display: inline-block;
+    border-radius: 5px;
+    box-shadow: 6px 8px 42px 2px rgba(0, 0, 0, 0.15);
+    font-size: 16px;
+    padding-top: 10px;
+
+    .form-title {
+        text-align: center;
+    }
+
+    .field-container {
+        height: 50px;
+        line-height: 50px;
+        border-bottom: 1px solid #f0f0f0;
+        display: flex;
+        justify-content: space-between;
+
+        &.input {
+            .field-label {
+                &::after {
+                    content:"\A";
+                    margin-left: 5px;
+                    width:10px;
+                    height:10px;
+                    border-radius:50%;
+                    background: darkslateblue;
+                    display:inline-block;
+                }
+            }
+        }
+
+        &.disabled {
+            .field-label {
+                color: #444;
+            }
+
+            .field {
+                .field-box {
+                    color: #444;
+                }
+            }
+        }
+
+        &.error {
+            .field-label {
+                color: red;
+            }
+        }
+
+        .field-label {
+            color: darkslateblue;
+            vertical-align: top;
+            margin-bottom: 0;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        .field {
+            margin-right: 20px;
+            height: 100%;
+            flex: auto;
+            display: flex;
+
+            .field-box {
+                flex: auto;
+                font-size: 24px;
+                color: darkslateblue;
+                text-align: right;
+                height: 100%;
+                border: 0;
+            }
+
+            .unit-label {
+                color: #007cb2;
+                margin: 0 0 0 10px;
+                float: right;
+                vertical-align: top;
+            }
+        }
+    }
+}
