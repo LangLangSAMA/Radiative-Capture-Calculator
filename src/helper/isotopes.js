@@ -1,7 +1,15 @@
 // import Big from "big.js";
-import library from 'chemical-elements';
+import elements from './elementsAndIsotopes';
 
-const isotopes = library.getElementsObject();
+const isotopes = getElementsObject();
+
+function getElementsObject() {
+    var object = {};
+    elements.forEach((e) => {
+        object[e.number] = e;
+    });
+    return object;
+}
 
 function getIsotope(mass_number, atomic_number) {
     const atom = isotopes[atomic_number];
