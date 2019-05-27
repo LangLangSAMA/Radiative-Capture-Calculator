@@ -60,6 +60,9 @@
             .field {
                 .field-label {
                     color: red;
+                    &::after {
+                        background: red;
+                    }
                 }
             }
         }

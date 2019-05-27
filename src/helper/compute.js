@@ -6,7 +6,7 @@ function computeResult(input) {
     const DefaultAtom = data.DefaultAtom;
     const DefaultRecoilAtom = data.DefaultRecoilAtom;
     const DefaultResonance = data.DefaultResonance;
-    const amu = data.atomic_mass_unit;
+    // const amu = data.atomic_mass_unit;
     const {
         beam_a,
         beam_z,
