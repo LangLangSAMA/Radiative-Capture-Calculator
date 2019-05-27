@@ -4,11 +4,11 @@
 
     .content-container {
         max-width: 1024px;
-        padding: 0 10px;
+        padding: 0 2px;
         margin-left: auto;
         margin-right: auto;
         .const-width {
-            width: 490px;
+            width: 330px;
         }
         .full-width {
             width: 1000px;
@@ -16,12 +16,18 @@
         // .reaction-params-form {
         // }
         .resonance-params-form {
-            vertical-align: top;
-            height: 239px;
+            height: 269px;
         }
-        // .beam-form {
-        // }
-        // .target-form {
+        .target-gas-params-form {
+            height: 269px;
+        }
+        .beam-form {
+            height: 269px;
+        }
+        .target-form {
+            height: 269px;
+        }
+        // .recoil-form {
         // }
     }
 }
@@ -44,10 +50,16 @@ input[type=search] {
     -webkit-border-radius: 0;
 }
 
+.m-r-15 {
+    margin-right: 15px;
+}
 .m-r-20 {
     margin-right: 20px;
 }
 
+.m-b-15 {
+    margin-bottom: 15px;
+}
 .m-b-20 {
     margin-bottom: 20px;
 }

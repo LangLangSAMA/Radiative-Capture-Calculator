@@ -10,7 +10,7 @@ import { computeResult } from "../helper/compute";
 
 // import css
 import "./Content.scss";
-import FormDisplay from "./FormDisplay";
+// import FormDisplay from "./FormDisplay";
 
 class Content extends React.Component {
     constructor(props) {
@@ -22,6 +22,8 @@ class Content extends React.Component {
             target_z: "",
             e_res: "",
             w_g: "",
+            pressure: "",
+            stopping_power: ""
         };
     }
 
@@ -45,6 +47,8 @@ class Content extends React.Component {
             target_z,
             e_res,
             w_g,
+            pressure,
+            stopping_power
         } = this.state;
 
         const result = computeResult(this.state);
@@ -69,6 +73,11 @@ class Content extends React.Component {
             w_g: w_g,
         }
 
+        const target_gas_params = {
+            pressure: pressure,
+            stopping_power: stopping_power
+        }
+
         // For Test Only
         // console.log(this.state);
 
@@ -76,33 +85,40 @@ class Content extends React.Component {
             <div className="component-content">
                 <div className="content-container">
                         <Form
-                            className="reaction-params-form const-width m-r-20 m-b-20"
+                            className="reaction-params-form const-width m-r-15 m-b-15"
                             FormRow={data.ReactionParamsRow}
                             title="Reaction Parameters"
                             valueList={reaction_params}
                             fieldOnChange={this.inputOnChange}
                         />
                         <Form
-                            className="resonance-params-form const-width m-b-20"
+                            className="resonance-params-form const-width m-r-15 m-b-15"
                             FormRow={data.ResonanceParamsRow}
-                            title="Resonance Params"
+                            title="Resonance Parameters"
                             valueList={resonance_params}
                             fieldOnChange={this.inputOnChange}
                         />
                         <Form
-                            className="beam-form const-width m-r-20 m-b-20"
+                            className="target-gas-params-form const-width m-b-15"
+                            FormRow={data.TargetGasParamsRow}
+                            title="Target Gas Parameters"
+                            valueList={target_gas_params}
+                            fieldOnChange={this.inputOnChange}
+                        />
+                        <Form
+                            className="beam-form const-width m-r-15 m-b-15"
                             FormRow={data.BeamRow}
                             title="Beam Atom"
                             valueList={beam}
                         />
                         <Form
-                            className="target-form const-width m-b-20"
+                            className="target-form const-width m-r-15 m-b-15"
                             FormRow={data.TargetRow}
                             title="Target Atom"
                             valueList={target}
                         />
-                        <FormDisplay
-                            className="recoil-form full-width"
+                        <Form
+                            className="recoil-form const-width m-b-15"
                             FormRow={data.RecoilRow}
                             title="Recoil Atom"
                             valueList={recoil}

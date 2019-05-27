@@ -25,20 +25,35 @@ const data = {
         {
             label: "Eres",
             name: "e_res",
-            unit: "MeV",
+            unit: "text(MeV)",
             required: "number"
         },
         {
             label: "Elevel",
             name: "e_level",
+            unit: "text(MeV)",
             disabled: true
         },
         {
             label: "wg",
             name: "w_g",
-            unit: "eV",
+            unit: "text(eV)",
             required: "number"
         },
+    ],
+    TargetGasParamsRow: [
+        {
+            label: "Pressure",
+            name: "pressure",
+            unit: "text(T)",
+            required: "number"
+        },
+        {
+            label: "Stopping-Power",
+            name: "stopping_power",
+            unit: "(text(MeV) // text(mg))/ text(cm^2)",
+            required: "number"
+        }
     ],
     BeamRow: [
         {
@@ -48,23 +63,13 @@ const data = {
         },
         {
             label: "Symbol",
-            name: "symbol",
-            disabled: true
-        },
-        {
-            label: "Mass Number",
-            name: "mass_number",
-            disabled: true
-        },
-        {
-            label: "Atomic Number",
-            name: "atomic_number",
+            name: "physics_notation",
             disabled: true
         },
         {
             label: "Mass",
             name: "mass",
-            unit: "amu",
+            unit: "text(amu)",
             disabled: true
         }
     ],
@@ -76,23 +81,13 @@ const data = {
         },
         {
             label: "Symbol",
-            name: "symbol",
-            disabled: true
-        },
-        {
-            label: "Mass Number",
-            name: "mass_number",
-            disabled: true
-        },
-        {
-            label: "Atomic Number",
-            name: "atomic_number",
+            name: "physics_notation",
             disabled: true
         },
         {
             label: "Mass",
             name: "mass",
-            unit: "amu",
+            unit: `text(amu)`,
             disabled: true
         }
     ],
@@ -104,45 +99,38 @@ const data = {
         },
         {
             label: "Symbol",
-            name: "symbol",
-            disabled: true
-        },
-        {
-            label: "Mass Number",
-            name: "mass_number",
-            disabled: true
-        },
-        {
-            label: "Atomic Number",
-            name: "atomic_number",
+            name: "physics_notation",
             disabled: true
         },
         {
             label: "Mass",
             name: "mass",
-            unit: "amu",
+            unit: "text(amu)",
             disabled: true
         },
         {
             label: "Q-val",
             name: "q_val",
-            unit: "MeV",
+            unit: "text(MeV)",
             disabled: true
         }
     ],
     DefaultAtom: {
         "name": "",
         "symbol": "",
+        "physics_notation": "",
         "atomic_number": "",
         "mass_number": "",
         "mass": ""
     },
-    DefaultOutputAtom: {
+    DefaultRecoilAtom: {
         "name": "",
         "symbol": "",
+        "physics_notation": "",    
         "atomic_number": "",
         "mass_number": "",
-        "mass": ""
+        "mass": "",
+        "q_val": ""
     },
     DefaultResonance: {
         "e_res": "",

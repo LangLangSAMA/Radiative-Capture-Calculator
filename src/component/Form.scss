@@ -1,8 +1,9 @@
 .form-wrapper {
     display: inline-block;
+    vertical-align: top;
     border-radius: 5px;
-    box-shadow: 6px 8px 42px 2px rgba(0, 0, 0, 0.15);
-    font-size: 16px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    font-size: 14px;
     padding-top: 10px;
 
     .form-title {
@@ -10,53 +11,61 @@
     }
 
     .field-container {
-        height: 50px;
-        line-height: 50px;
+        position: relative;
+        height: 55px;
+        line-height: 55px;
         border-bottom: 1px solid #f0f0f0;
         display: flex;
         justify-content: space-between;
 
+        &.active {
+            .field {
+                .field-label {
+                    font-size: 12px;
+                    height: 20x;
+                    line-height: 20px;
+    
+                    &::after {
+                        width: 8px;
+                        height: 8px;
+                    }
+                }
+            }
+        }
+
         &.input {
-            .field-label {
-                &::after {
-                    content:"\A";
-                    margin-left: 5px;
-                    width:10px;
-                    height:10px;
-                    border-radius:50%;
-                    background: darkslateblue;
-                    display:inline-block;
+            .field {
+                .field-label {
+                    &::after {
+                        display: inline-block;
+                    }
                 }
             }
         }
 
         &.disabled {
-            .field-label {
-                color: #444;
-            }
 
             .field {
                 .field-box {
+                    cursor: not-allowed;
+                    color: #444;
+                }
+                .field-label {
                     color: #444;
                 }
             }
         }
 
         &.error {
-            .field-label {
-                color: red;
+            .field {
+                .field-label {
+                    color: red;
+                }
             }
         }
 
-        .field-label {
-            color: darkslateblue;
-            vertical-align: top;
-            margin-bottom: 0;
-            margin-left: 20px;
-            margin-right: 20px;
-        }
-
         .field {
+            margin-left: 20px;
             margin-right: 20px;
             height: 100%;
             flex: auto;
@@ -64,8 +73,8 @@
 
             .field-box {
                 flex: auto;
-                font-size: 24px;
-                color: darkslateblue;
+                font-size: 16px;
+                color: rgb(8, 8, 10);
                 text-align: right;
                 height: 100%;
                 border: 0;
@@ -74,8 +83,29 @@
             .unit-label {
                 color: #007cb2;
                 margin: 0 0 0 10px;
-                float: right;
-                vertical-align: top;
+
+                span {
+                    font-size: 14px !important;
+                    font-family: 'Times New Roman', Times, serif;
+                }
+            }
+
+            .field-label {
+                color: darkslateblue;
+                position: absolute;
+                margin-bottom: 0;
+                transition: all .2s ease;
+
+                &::after {
+                    content: "\A";
+                    margin-left: 5px;
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                    background: darkslateblue;
+                    display: none;
+                    transition: all .2s ease;
+                }
             }
         }
     }

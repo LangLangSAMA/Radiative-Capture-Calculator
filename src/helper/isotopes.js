@@ -18,6 +18,7 @@ function getIsotope(mass_number, atomic_number) {
                 isotope = {
                     "name": atom.name,
                     "symbol": atom.symbol,
+                    "physics_notation": `text(${atom.symbol})_${atom.number}^${mass_number}`,
                     "atomic_number": atom.number,
                     "mass_number": mass_number,
                     "mass": i.mass

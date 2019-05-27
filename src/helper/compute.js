@@ -4,7 +4,9 @@ import Big from "big.js";
 
 function computeResult(input) {
     const DefaultAtom = data.DefaultAtom;
+    const DefaultRecoilAtom = data.DefaultRecoilAtom;
     const DefaultResonance = data.DefaultResonance;
+    const amu = data.atomic_mass_unit;
     const {
         beam_a,
         beam_z,
@@ -27,7 +29,7 @@ function computeResult(input) {
     const resultAtom = computeIsotope(+beam_a + +target_a, +beam_z + +target_z);
     const Qval = computeQval(resultBeam.mass, resultTarget.mass, resultAtom.mass);
     const resultRecoil = computeRecoil(resultAtom, Qval);
-    result["recoil"] = resultRecoil ? resultRecoil : DefaultAtom;
+    result["recoil"] = resultRecoil ? resultRecoil : DefaultRecoilAtom;
 
     // Compute Resonance Value
     const Elevel = computeElevel(e_res, Qval);
