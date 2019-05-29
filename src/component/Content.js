@@ -69,7 +69,7 @@ class Content extends React.Component {
 
         const resonance_params = {
             e_res: e_res,
-            e_level: resonance.e_level,
+            e_lvl: resonance.e_lvl,
             w_g: w_g,
         }
 

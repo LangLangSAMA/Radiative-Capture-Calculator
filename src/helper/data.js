@@ -30,12 +30,13 @@ const data = {
         },
         {
             label: "Elevel",
-            name: "e_level",
+            name: "e_lvl",
             unit: "text(MeV)",
             disabled: true
         },
         {
-            label: "wg",
+            label: "omegagamma",
+            texLabel: true,
             name: "w_g",
             unit: "text(eV)",
             required: "number"
@@ -69,7 +70,7 @@ const data = {
         {
             label: "Mass",
             name: "mass",
-            unit: "text(amu)",
+            unit: "text(MeV)",
             disabled: true
         }
     ],
@@ -87,7 +88,7 @@ const data = {
         {
             label: "Mass",
             name: "mass",
-            unit: `text(amu)`,
+            unit: `text(MeV)`,
             disabled: true
         }
     ],
@@ -105,7 +106,7 @@ const data = {
         {
             label: "Mass",
             name: "mass",
-            unit: "text(amu)",
+            unit: "text(MeV)",
             disabled: true
         },
         {
@@ -134,9 +135,13 @@ const data = {
     },
     DefaultResonance: {
         "e_res": "",
-        "q_val": "",
-        "e_level": "",
-        "wg": "",
+        "e_lvl": "",
+        "w_g": "",
+    },
+    DefaultKinematics: {
+        "reduced_mass_amu": "",
+        "reduced_mass_mev": "",
+        "t_lab": ""
     },
     atomic_mass_unit: 931.494,
 }
