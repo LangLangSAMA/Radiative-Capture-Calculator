@@ -37,7 +37,7 @@ function computeResult(input) {
     result["resonance"] = resonance ? resonance : DefaultResonance;
 
     // Compute Kinematics
-    const kinematics = getKinematics(beam, target, e_res);
+    const kinematics = getKinematics(beam, target, recoil, resonance, e_res);
     result["kinematics"] = kinematics ? kinematics : DefaultKinematics;
 
     Object.keys(result).forEach(function (field) {
@@ -47,6 +47,8 @@ function computeResult(input) {
             }
         })
     });
+
+    console.log(kinematics);
 
     return result;
 }
@@ -90,7 +92,7 @@ function getResonance(e_res, q_val) {
         return false;
     }
 
-    if (isNaN(e_res)) {
+    if (isNaN(e_res) || +e_res === 0) {
         return false;
     }
 
@@ -101,12 +103,12 @@ function getResonance(e_res, q_val) {
     }
 }
 
-function getKinematics(beam, target, e_res) {
-    if (!(e_res && beam && target)) {
+function getKinematics(beam, target, recoil, resonance, e_res) {
+    if (!(beam && target && recoil && resonance && e_res)) {
         return false;
     }
 
-    if (isNaN(e_res)) {
+    if (isNaN(e_res) || +e_res === 0) {
         return false;
     }
 
@@ -114,10 +116,80 @@ function getKinematics(beam, target, e_res) {
     const reduced_mass_amu = computeReducedMass(beam.mass_amu, target.mass_amu);
     const t_lab = computeTLab(e_res, beam.mass, target.mass);
 
+    if (!t_lab) {
+        return false;
+    }
+
+    const vel_sq = computeVelSquare(t_lab, beam.mass_amu);
+
+    const e_lab = computeELab(t_lab, beam.mass);
+
+    if (!e_lab) {
+        return false;
+    }
+
+    const p_lab = computePLab(e_lab, beam.mass);
+
+    if (!p_lab) {
+        return false;
+    }
+
+    const e_comp = computeEComp(recoil.mass, resonance.e_lvl, p_lab);
+
+    if (!e_comp) {
+        return false;
+    }
+
+    const t_comp = computeTComp(recoil.mass, resonance.e_lvl, e_comp);
+
+    if (!t_comp) {
+        return false;
+    }
+
+    const gamma_cm = computeGammaCM(recoil.mass, resonance.e_lvl, e_comp);
+
+    if (!gamma_cm) {
+        return false;
+    }
+
+    const velocity_cm = computeVelocityCM(p_lab, e_comp);
+
+    if (!velocity_cm) {
+        return false;
+    }
+
+    const recoil_p = computeRecoilMomentum(recoil.q_val, e_res);
+
+    if (!recoil_p) {
+        return false;
+    }
+
+    const recoil_v = computeRecoilVelocity(recoil_p, recoil.mass);
+
+    if (!recoil_v) {
+        return false;
+    }
+
+    const max_angle = computeMaxAngle(gamma_cm, velocity_cm, recoil_v);
+
+    if (!max_angle) {
+        return false;
+    }
+
     return {
         "reduced_mass_mev": reduced_mass_mev,
         "reduced_mass_amu": reduced_mass_amu,
-        "t_lab": t_lab
+        "t_lab": t_lab,
+        "vel_sq": vel_sq,
+        "e_lab": e_lab,
+        "p_lab": p_lab,
+        "e_comp": e_comp,
+        "t_comp": t_comp,
+        "gamma_cm": gamma_cm,
+        "velocity_cm": velocity_cm,
+        "recoil_p": recoil_p,
+        "recoil_v": recoil_v,
+        "max_angle": max_angle
     }
 }
 
@@ -163,6 +235,87 @@ function computeTLab(e_res, beam_mass, target_mass) {
         .minus(beam_mass_big);
 
     return t_lab;
+}
+
+function computeVelSquare(t_lab, beam_mass) {
+    const t_lab_big = new Big(t_lab);
+    const beam_mass_big = new Big(beam_mass);
+
+    return t_lab_big.div(beam_mass_big);
+}
+
+function computeELab(t_lab, beam_mass) {
+    const t_lab_big = new Big(t_lab);
+    const beam_mass_big = new Big(beam_mass);
+
+    return t_lab_big.plus(beam_mass_big);
+}
+
+function computePLab(e_lab, beam_mass) {
+    const e_lab_big = new Big(e_lab);
+    const beam_mass_big = new Big(beam_mass);
+
+    return (e_lab_big.pow(2)
+        .minus(beam_mass_big.pow(2)))
+        .sqrt();
+}
+
+function computeEComp(recoil_mass, e_lvl, p_lab) {
+    const recoil_mass_big = new Big(recoil_mass);
+    const e_lvl_big = new Big(e_lvl);
+    const p_lab_big = new Big(p_lab);
+
+    return p_lab_big.pow(2)
+        .plus(e_lvl_big.plus(recoil_mass_big).pow(2))
+        .sqrt();
+}
+
+function computeTComp(recoil_mass, e_lvl, e_comp) {
+    const recoil_mass_big = new Big(recoil_mass);
+    const e_lvl_big = new Big(e_lvl);
+    const e_comp_big = new Big(e_comp);
+
+    return e_comp_big
+        .minus(recoil_mass_big.plus(e_lvl_big));
+}
+
+function computeGammaCM(recoil_mass, e_lvl, e_comp) {
+    const recoil_mass_big = new Big(recoil_mass);
+    const e_lvl_big = new Big(e_lvl);
+    const e_comp_big = new Big(e_comp);
+
+    return e_comp_big
+        .div(recoil_mass_big.plus(e_lvl_big));
+}
+
+function computeVelocityCM(p_lab, e_comp) {
+    const p_lab_big = new Big(p_lab);
+    const e_comp_big = new Big(e_comp);
+
+    return p_lab_big.div(e_comp_big);
+}
+
+function computeRecoilMomentum(q_val, e_res) {
+    const q_val_big = new Big(q_val);
+    const e_res_big = new Big(e_res);
+
+    return q_val_big.plus(e_res_big);
+}
+
+function computeRecoilVelocity(recoil_p, recoil_mass) {
+    const recoil_p_big = new Big(recoil_p);
+    const recoil_mass_big = new Big(recoil_mass);
+
+    return recoil_p_big.div(recoil_mass_big);
+}
+
+function computeMaxAngle(gamma_cm, velocity_cm, recoil_v) {
+    const one = new Big(1);
+    const gamma_cm_big = new Big(gamma_cm);
+    const velocity_cm_big = new Big(velocity_cm);
+    const recoil_v_big = new Big(recoil_v);
+
+    return Math.atan(one.div(gamma_cm_big).times(recoil_v_big.div(velocity_cm_big)));
 }
 
 // ------------------------------------Convertion Function------------------------------------
