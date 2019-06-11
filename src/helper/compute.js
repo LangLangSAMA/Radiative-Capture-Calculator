@@ -176,6 +176,60 @@ function getKinematics(beam, target, recoil, resonance, e_res) {
         return false;
     }
 
+    const recoil_e = computeRecoilEnergy(recoil_p, recoil.mass);
+
+    if (!recoil_e) {
+        return false;
+    }
+
+    const recoil_e_neg = computeRecoilEnergyNegative(recoil_e, gamma_cm, velocity_cm, recoil_p);
+
+    if (!recoil_e_neg) {
+        return false;
+    }
+
+    const recoil_e_zero = computeRecoilEnergyZero(recoil_e, gamma_cm);
+
+    if (!recoil_e_zero) {
+        return false;
+    }
+
+    const recoil_e_pos = computeRecoilEnergyPositive(recoil_e, gamma_cm, velocity_cm, recoil_p);
+
+    if (!recoil_e_pos) {
+        return false;
+    }
+
+    const recoil_t_neg = computeRecoilKinematics(recoil_e_neg, recoil.mass);
+
+    if (!recoil_t_neg) {
+        return false;
+    }
+
+    const recoil_t_zero = computeRecoilKinematics(recoil_e_zero, recoil.mass);
+
+    if (!recoil_t_zero) {
+        return false;
+    }
+
+    const recoil_t_pos = computeRecoilKinematics(recoil_e_pos, recoil.mass);
+
+    if (!recoil_t_pos) {
+        return false;
+    }
+
+    const delta_e_neg = computeDeltaEnergyNegative(recoil_t_zero, recoil_t_neg);
+
+    if (!delta_e_neg) {
+        return false;
+    }
+
+    const delta_e_pos = computeDeltaEnergyPositive(recoil_t_pos, recoil_t_zero);
+
+    if (!delta_e_pos) {
+        return false;
+    }
+
     return {
         "reduced_mass_mev": reduced_mass_mev,
         "reduced_mass_amu": reduced_mass_amu,
@@ -189,7 +243,16 @@ function getKinematics(beam, target, recoil, resonance, e_res) {
         "velocity_cm": velocity_cm,
         "recoil_p": recoil_p,
         "recoil_v": recoil_v,
-        "max_angle": max_angle
+        "max_angle": max_angle,
+        "recoil_e": recoil_e,
+        "recoil_e_neg": recoil_e_neg,
+        "recoil_e_zero": recoil_e_zero,
+        "recoil_e_pos": recoil_e_pos,
+        "recoil_t_neg": recoil_t_neg,
+        "recoil_t_zero": recoil_t_zero,
+        "recoil_t_pos": recoil_t_pos,
+        "delta_e_neg": delta_e_neg,
+        "delta_e_pos": delta_e_pos
     }
 }
 
@@ -316,6 +379,61 @@ function computeMaxAngle(gamma_cm, velocity_cm, recoil_v) {
     const recoil_v_big = new Big(recoil_v);
 
     return Math.atan(one.div(gamma_cm_big).times(recoil_v_big.div(velocity_cm_big)));
+}
+
+function computeRecoilEnergy(recoil_p, recoil_mass) {
+    const recoil_p_big = new Big(recoil_p);
+    const recoil_mass_big = new Big(recoil_mass);
+
+    return recoil_p_big.pow(2)
+        .plus(recoil_mass_big.pow(2))
+        .sqrt();
+}
+
+function computeRecoilEnergyNegative(recoil_e, gamma_cm, velocity_cm, recoil_p) {
+    const recoil_e_big = new Big(recoil_e);
+    const gamma_cm_big = new Big(gamma_cm);
+    const velocity_cm_big = new Big(velocity_cm);
+    const recoil_p_big = new Big(recoil_p);
+
+    return gamma_cm_big.times(recoil_e_big.minus(velocity_cm_big.times(recoil_p_big)));
+}
+
+function computeRecoilEnergyZero(recoil_e, gamma_cm) {
+    const recoil_e_big = new Big(recoil_e);
+    const gamma_cm_big = new Big(gamma_cm);
+
+    return gamma_cm_big.times(recoil_e_big);
+}
+
+function computeRecoilEnergyPositive(recoil_e, gamma_cm, velocity_cm, recoil_p) {
+    const recoil_e_big = new Big(recoil_e);
+    const gamma_cm_big = new Big(gamma_cm);
+    const velocity_cm_big = new Big(velocity_cm);
+    const recoil_p_big = new Big(recoil_p);
+
+    return gamma_cm_big.times(recoil_e_big.plus(velocity_cm_big.times(recoil_p_big)));
+}
+
+function computeRecoilKinematics(recoil_e, recoil_mass) {
+    const recoil_e_big = new Big(recoil_e);
+    const recoil_mass_big = new Big(recoil_mass);
+
+    return recoil_e_big.minus(recoil_mass_big);
+}
+
+function computeDeltaEnergyNegative(recoil_t_high, recoil_t_low) {
+    const recoil_t_high_big = new Big(recoil_t_high);
+    const recoil_t_low_big = new Big(recoil_t_low);
+
+    return recoil_t_high_big.minus(recoil_t_low_big).div(recoil_t_high_big).times(100);
+}
+
+function computeDeltaEnergyPositive(recoil_t_high, recoil_t_low) {
+    const recoil_t_high_big = new Big(recoil_t_high);
+    const recoil_t_low_big = new Big(recoil_t_low);
+
+    return recoil_t_high_big.minus(recoil_t_low_big).div(recoil_t_low).times(100);
 }
 
 // ------------------------------------Convertion Function------------------------------------
