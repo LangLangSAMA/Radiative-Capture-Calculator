@@ -1,21 +1,23 @@
 import React from "react";
-// import { isotopes } from "../helper/isotopes"
 
 // import components
 import Form from "./Form";
+import FormDisplay from "./FormDisplay";
+import Graph from "./Graph";
 
 // import data
 import data from "../helper/data";
-import { computeResult } from "../helper/compute";
+// import { logicJS } from "../helper/graphLogic";
+import { computeResult, computeMaxAngleData } from "../helper/compute";
 
 // import css
 import "./Content.scss";
-// import FormDisplay from "./FormDisplay";
 
 class Content extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            // input_params
             beam_a: "",
             beam_z: "",
             target_a: "",
@@ -23,8 +25,12 @@ class Content extends React.Component {
             e_res: "",
             w_g: "",
             pressure: "",
-            stopping_power: ""
+            stopping_power: "",
+
+            max_angle_data: [],
+            max_angle_value: ""
         };
+        this.result = [];
     }
 
     inputOnChange = (e) => {
@@ -38,6 +44,21 @@ class Content extends React.Component {
         })
     }
 
+    getMaxAngleData = () => {
+        const {
+            beam,
+            target,
+            recoil
+        } = this.result;
+
+        const max_angle = computeMaxAngleData(beam, target, recoil);
+
+        this.setState({
+            max_angle_data: max_angle.data,
+            max_angle_value: max_angle.max_value
+        })
+    }
+
     render() {
 
         const {
@@ -48,17 +69,21 @@ class Content extends React.Component {
             e_res,
             w_g,
             pressure,
-            stopping_power
+            stopping_power,
+
+            max_angle_data,
+            max_angle_value
         } = this.state;
 
-        const result = computeResult(this.state);
+        this.result = computeResult(this.state);
 
         const {
             beam,
             target,
             recoil,
             resonance,
-        } = result;
+            kinematics,
+        } = this.result;
 
         const reaction_params = {
             beam_a: beam_a,
@@ -84,45 +109,59 @@ class Content extends React.Component {
         return (
             <div className="component-content">
                 <div className="content-container">
-                        <Form
-                            className="reaction-params-form const-width m-r-15 m-b-15"
-                            FormRow={data.ReactionParamsRow}
-                            title="Reaction Parameters"
-                            valueList={reaction_params}
-                            fieldOnChange={this.inputOnChange}
-                        />
-                        <Form
-                            className="resonance-params-form const-width m-r-15 m-b-15"
-                            FormRow={data.ResonanceParamsRow}
-                            title="Resonance Parameters"
-                            valueList={resonance_params}
-                            fieldOnChange={this.inputOnChange}
-                        />
-                        <Form
-                            className="target-gas-params-form const-width m-b-15"
-                            FormRow={data.TargetGasParamsRow}
-                            title="Target Gas Parameters"
-                            valueList={target_gas_params}
-                            fieldOnChange={this.inputOnChange}
-                        />
-                        <Form
-                            className="beam-form const-width m-r-15 m-b-15"
-                            FormRow={data.BeamRow}
-                            title="Beam Atom"
-                            valueList={beam}
-                        />
-                        <Form
-                            className="target-form const-width m-r-15 m-b-15"
-                            FormRow={data.TargetRow}
-                            title="Target Atom"
-                            valueList={target}
-                        />
-                        <Form
-                            className="recoil-form const-width m-b-15"
-                            FormRow={data.RecoilRow}
-                            title="Recoil Atom"
-                            valueList={recoil}
-                        />
+                    <Form
+                        className="reaction-params-form const-width m-r-15 m-b-15"
+                        FormRow={data.ReactionParamsRow}
+                        title="Reaction Parameters"
+                        valueList={reaction_params}
+                        fieldOnChange={this.inputOnChange}
+                    />
+                    <Form
+                        className="resonance-params-form const-width m-r-15 m-b-15"
+                        FormRow={data.ResonanceParamsRow}
+                        title="Resonance Parameters"
+                        valueList={resonance_params}
+                        fieldOnChange={this.inputOnChange}
+                    />
+                    <Form
+                        className="target-gas-params-form const-width m-b-15"
+                        FormRow={data.TargetGasParamsRow}
+                        title="Target Gas Parameters"
+                        valueList={target_gas_params}
+                        fieldOnChange={this.inputOnChange}
+                    />
+                    <Form
+                        className="beam-form const-width m-r-15 m-b-15"
+                        FormRow={data.BeamRow}
+                        title="Beam Atom"
+                        valueList={beam}
+                    />
+                    <Form
+                        className="target-form const-width m-r-15 m-b-15"
+                        FormRow={data.TargetRow}
+                        title="Target Atom"
+                        valueList={target}
+                    />
+                    <Form
+                        className="recoil-form const-width m-b-15"
+                        FormRow={data.RecoilRow}
+                        title="Recoil Atom"
+                        valueList={recoil}
+                    />
+                    <FormDisplay
+                        className="kinematics-form full-width m-b-15"
+                        FormRowList={data.KinematicsRow}
+                        title="Kinematics"
+                        valueList={kinematics}
+                    />
+                    <Graph
+                        title="Eres vs Max Angle"
+                        data={max_angle_data && max_angle_data}
+                        max_value={max_angle_value ? max_angle_value : 0}
+                        e_res={e_res ? e_res : 0}
+                        max_angle={kinematics.max_angle ? kinematics.max_angle : 0}
+                        getMaxAngleData={this.getMaxAngleData}
+                    />
                 </div>
             </div>
         );

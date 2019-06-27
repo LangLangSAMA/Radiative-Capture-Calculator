@@ -1,4 +1,100 @@
 const data = {
+    KinematicsRow: [
+        [
+            {
+                label: "Tlab",
+                name: "t_lab",
+                // texLabel: true,
+                unit: "MeV",
+            },
+            {
+                label: "Vel-squared",
+                name: "vel_sq",
+                // texLabel: true,
+                unit: "MeV/u",
+            },
+            {
+                label: "Elab",
+                name: "e_lab",
+                unit: "MeV"
+            },
+            {
+                label: "plab",
+                name: "p_lab",
+                unit: "MeV/c"
+            },
+        ],
+        [
+            {
+                label: "Ecomp",
+                name: "e_comp",
+                unit: "MeV"
+            },
+            {
+                label: "Tcomp",
+                name: "t_comp",
+                unit: "MeV"
+            },
+            {
+                label: "Gamma CM",
+                name: "gamma_cm",
+            },
+            {
+                label: "Velocity CM",
+                name: "velocity_cm",
+                unit: "c"
+            },
+        ],
+        [
+            {
+                label: "Recoil Momentum",
+                name: "recoil_p",
+                unit: "MeV/c"
+            },
+            {
+                label: "Recoil Velocity",
+                name: "recoil_v",
+                unit: "c"
+            },
+            {
+                label: "Max Angle",
+                name: "max_angle",
+                unit: "rad"
+            },
+            {
+                label: "Recoil Energy",
+                name: "recoil_e",
+                unit: "MeV"
+            },
+        ],
+        [
+            {
+                label: "Recoil T Backward",
+                name: "recoil_t_neg",
+                unit: "MeV"
+            },
+            {
+                label: "Recoil T",
+                name: "recoil_t_zero",
+                unit: "MeV"
+            },
+            {
+                label: "Recoil T Forward",
+                name: "recoil_t_pos",
+                unit: "MeV"
+            },
+            {
+                label: "Delta E-",
+                name: "delta_e_neg",
+                unit: "%"
+            },
+            {
+                label: "Delta E+",
+                name: "delta_e_pos",
+                unit: "%"
+            }
+        ]
+    ],
     ReactionParamsRow: [
         {
             label: "Beam A",

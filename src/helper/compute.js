@@ -3,7 +3,6 @@ import data from "./data";
 import Big from "big.js";
 
 // import global variables
-// const amu = data.atomic_mass_unit;
 const DefaultAtom = data.DefaultAtom;
 const DefaultRecoilAtom = data.DefaultRecoilAtom;
 const DefaultResonance = data.DefaultResonance;
@@ -47,8 +46,6 @@ function computeResult(input) {
             }
         })
     });
-
-    console.log(kinematics);
 
     return result;
 }
@@ -260,11 +257,11 @@ function getKinematics(beam, target, recoil, resonance, e_res) {
 // Return numerical result
 
 function computeQval(beam_mass, target_mass, recoil_mass) {
-    const beamMass = new Big(beam_mass);
-    const targetMass = new Big(target_mass);
-    const recoilMass = new Big(recoil_mass);
+    const beam_mass_big = new Big(beam_mass);
+    const target_mass_big = new Big(target_mass);
+    const recoil_mass_big = new Big(recoil_mass);
 
-    const q_val = beamMass.plus(targetMass).minus(recoilMass);
+    const q_val = beam_mass_big.plus(target_mass_big).minus(recoil_mass_big);
 
     return q_val;
 }
@@ -436,6 +433,49 @@ function computeDeltaEnergyPositive(recoil_t_high, recoil_t_low) {
     return recoil_t_high_big.minus(recoil_t_low_big).div(recoil_t_low).times(100);
 }
 
+// ------------------------------------Graph Data Calculation------------------------------------
+// section functions used for graph
+
+function computeMaxAngleData(beam, target, recoil) {
+    var i, start = 10, end = 200, data = [];
+    var e_res, e_lvl, t_lab, e_lab, p_lab, e_comp, gamma_cm, velocity_cm, recoil_p, recoil_v;
+    var max_angle, max_value = 0;
+
+    if (!(ObjectValidationCheck(beam) && ObjectValidationCheck(target) && ObjectValidationCheck(recoil))) {
+        return {
+            data: [],
+            max_value: ""
+        };
+    }
+
+    for (i = start; i < end; i++) {
+        e_res = i / 100;
+        e_lvl = computeElevel(e_res, recoil.q_val);
+        t_lab = computeTLab(e_res, beam.mass, target.mass);
+        e_lab = computeELab(t_lab, beam.mass);
+        p_lab = computePLab(e_lab, beam.mass);
+        e_comp = computeEComp(recoil.mass, e_lvl, p_lab);
+
+        gamma_cm = computeGammaCM(recoil.mass, e_lvl, e_comp);
+        velocity_cm = computeVelocityCM(p_lab, e_comp);
+        recoil_p = computeRecoilMomentum(recoil.q_val, e_res);
+        recoil_v = computeRecoilVelocity(recoil_p, recoil.mass);
+
+        max_angle = computeMaxAngle(gamma_cm, velocity_cm, recoil_v);
+
+        if (i === start || max_value < max_angle) {
+            max_value = max_angle;
+        }
+
+        data.push({x: e_res, y: max_angle});
+    }
+
+    return {
+        data: data,
+        max_value: max_value
+    };
+}
+
 // ------------------------------------Convertion Function------------------------------------
 // Convert variable type
 
@@ -443,4 +483,14 @@ function defaultConvertion(num) {
     return num.toFixed(4).toString();
 }
 
-export { computeResult }
+function ObjectValidationCheck(obj) {
+    for (var key in obj) {
+        if (!obj[key]) {
+            return false;
+        }
+    }
+    
+    return true;
+}
+
+export { computeResult, computeMaxAngleData }

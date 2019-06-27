@@ -9,22 +9,36 @@ const FormDisplay = (props) => {
             <h2 className="form-title">
                 {props.title}
             </h2>
-            <table>
-                <thead>
-                    <tr>
-                        <TableHeading Heading={props.FormRow} />
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <TableValue FormRow={props.FormRow} valueList={props.valueList} />
-                    </tr>
-                </tbody>
-            </table>
+            <FormTableList FormRowList={props.FormRowList} valueList={props.valueList}/>
         </form>
     );
 }
 export default FormDisplay;
+
+const FormTableList = (props) => {
+    const {
+        FormRowList
+    } = props;
+
+    return (
+        FormRowList.map((FormRow, i) => {
+            return (
+                <table key={i}>
+                    <thead>
+                        <tr>
+                            <TableHeading Heading={FormRow} />
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <TableValue FormRow={FormRow} valueList={props.valueList} />
+                        </tr>
+                    </tbody>
+                </table>
+            )
+        })
+    )
+}
 
 const TableHeading = (props) => {
     const {
