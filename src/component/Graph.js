@@ -133,11 +133,22 @@ class LineGraph extends React.Component {
             data: [{ x: 0, y: max_angle }, { x: e_res, y: max_angle }],
         }
 
+        const defaultMarkProps = {
+            size: 5,
+            fill: 'grey',
+            style: {
+                pointerEvents: 'none'
+            },
+            data: [{x: e_res, y: max_angle}]
+        }
+
         const ITEMS = [
             { title: 'Acceptable Max', color: 'red', strokeStyle: 'dashed' },
             { title: 'Selected Value', color: 'grey', strokeStyle: 'dashed' },
             { title: 'Data', color: 'blue', strokeWidth: 2 },
         ];
+
+        const isMarkValid = e_res !== 0 || max_angle !== 0;
 
         return (
             <XYPlot
@@ -152,8 +163,9 @@ class LineGraph extends React.Component {
                 <XAxis title="Eres (MeV)" />
                 <YAxis title="max angle" tickSize={0.5} />
                 {isValid && <LineSeries {...lineSeriesProps} />}
-                {isValid && <LineSeries {...defaultEresProps} />}
-                {isValid && <LineSeries {...defaultMaxAngleProps} />}
+                {isMarkValid && <LineSeries {...defaultEresProps} />}
+                {isMarkValid && <LineSeries {...defaultMaxAngleProps} />}
+                {isMarkValid && <MarkSeriesCanvas {...defaultMarkProps} />}
                 <LineSeries {...constMaxAngleProps} />
             </XYPlot>
         );
