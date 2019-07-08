@@ -14,6 +14,10 @@ export default class Graph extends React.Component {
         }
     };
 
+    componentDidMount() {
+        this.drawGraph();
+    }
+
     updateNearestXY = (point) => {
         this.setState({
             nearestXY: point
@@ -31,6 +35,7 @@ export default class Graph extends React.Component {
             data,
             max_angle,
             max_value,
+            min_value,
             e_res
         } = this.props;
 
@@ -40,8 +45,11 @@ export default class Graph extends React.Component {
             height
         } = this.state
 
+        const yMaxValue = max_value > 0.024 ? max_value : 0.024;
+        const yMinValue = min_value < 0 ? min_value : 0;
+
         const xDomain = [0, 2];
-        const yDomain = [0, max_value ? max_value : 0.03];
+        const yDomain = [yMinValue, yMaxValue];
 
         const isValid = Object.keys(data).length !== 0;
 
@@ -117,6 +125,13 @@ class LineGraph extends React.Component {
             data: [{ x: 0, y: 0.022 }, { x: 2, y: 0.022 }],
         };
 
+        const xAxisProps = {
+            animation: true,
+            opacityType: 'literal',
+            stroke: 'black',
+            data: [{ x: 0, y: 0 }, { x: 2, y: 0 }],
+        }
+
         const defaultEresProps = {
             animation: true,
             opacityType: 'literal',
@@ -166,6 +181,7 @@ class LineGraph extends React.Component {
                 {isMarkValid && <LineSeries {...defaultEresProps} />}
                 {isMarkValid && <LineSeries {...defaultMaxAngleProps} />}
                 {isMarkValid && <MarkSeriesCanvas {...defaultMarkProps} />}
+                <LineSeries {...xAxisProps} />
                 <LineSeries {...constMaxAngleProps} />
             </XYPlot>
         );

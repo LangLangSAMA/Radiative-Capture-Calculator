@@ -39,10 +39,10 @@ class FormField extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            active: false
+            active: this.props.value ? true : false
         };
     }
-
+    
     fieldOnFocus = () => {
         this.setState({
             active: true
@@ -86,11 +86,10 @@ class FormField extends React.Component {
         if (disabled) {
             fieldClassName += " disabled";
         } else {
+            if (active) {
+                fieldClassName += " active";
+            }
             fieldClassName += " input";
-        }
-
-        if (active) {
-            fieldClassName += " active";
         }
 
         return (

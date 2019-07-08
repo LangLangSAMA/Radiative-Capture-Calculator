@@ -18,17 +18,18 @@ class Content extends React.Component {
         super(props);
         this.state = {
             // input_params
-            beam_a: "",
-            beam_z: "",
-            target_a: "",
-            target_z: "",
-            e_res: "",
-            w_g: "",
-            pressure: "",
+            beam_a: 22,
+            beam_z: 10,
+            target_a: 1,
+            target_z: 1,
+            e_res: 1,
+            w_g: 1,
+            pressure: 5,
             stopping_power: "",
 
             max_angle_data: [],
-            max_angle_value: ""
+            max_value: "",
+            min_value: ""
         };
         this.result = [];
     }
@@ -55,7 +56,8 @@ class Content extends React.Component {
 
         this.setState({
             max_angle_data: max_angle.data,
-            max_angle_value: max_angle.max_value
+            max_value: max_angle.max_value,
+            min_value: max_angle.min_value
         })
     }
 
@@ -72,7 +74,8 @@ class Content extends React.Component {
             stopping_power,
 
             max_angle_data,
-            max_angle_value
+            max_value,
+            min_value
         } = this.state;
 
         this.result = computeResult(this.state);
@@ -157,7 +160,8 @@ class Content extends React.Component {
                     <Graph
                         title="Eres vs Max Angle"
                         data={max_angle_data && max_angle_data}
-                        max_value={max_angle_value ? max_angle_value : 0}
+                        max_value={max_value ? max_value : 0}
+                        min_value={min_value ? min_value : 0}
                         e_res={e_res ? e_res : 0}
                         max_angle={kinematics.max_angle ? kinematics.max_angle : 0}
                         getMaxAngleData={this.getMaxAngleData}

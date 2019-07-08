@@ -439,12 +439,13 @@ function computeDeltaEnergyPositive(recoil_t_high, recoil_t_low) {
 function computeMaxAngleData(beam, target, recoil) {
     var i, start = 10, end = 200, data = [];
     var e_res, e_lvl, t_lab, e_lab, p_lab, e_comp, gamma_cm, velocity_cm, recoil_p, recoil_v;
-    var max_angle, max_value = 0;
+    var max_angle, max_value, min_value = 0;
 
     if (!(ObjectValidationCheck(beam) && ObjectValidationCheck(target) && ObjectValidationCheck(recoil))) {
         return {
             data: [],
-            max_value: ""
+            max_value: 0,
+            min_value: 0
         };
     }
 
@@ -467,12 +468,17 @@ function computeMaxAngleData(beam, target, recoil) {
             max_value = max_angle;
         }
 
+        if (i === start || min_value > max_angle) {
+            min_value = max_angle;
+        }
+
         data.push({x: e_res, y: max_angle});
     }
 
     return {
         data: data,
-        max_value: max_value
+        max_value: max_value,
+        min_value: min_value
     };
 }
 
