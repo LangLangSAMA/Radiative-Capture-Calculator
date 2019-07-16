@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.847a216f.chunk.css",
-    "main.js": "/static/js/main.e3251cce.chunk.js",
-    "main.js.map": "/static/js/main.e3251cce.chunk.js.map",
-    "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
-    "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
-    "static/css/2.5a2f7233.chunk.css": "/static/css/2.5a2f7233.chunk.css",
-    "static/js/2.071915cc.chunk.js": "/static/js/2.071915cc.chunk.js",
-    "static/js/2.071915cc.chunk.js.map": "/static/js/2.071915cc.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.a54fc318b2689a20a959e41436b349ff.js": "/precache-manifest.a54fc318b2689a20a959e41436b349ff.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/2.5a2f7233.chunk.css.map": "/static/css/2.5a2f7233.chunk.css.map",
-    "static/css/main.847a216f.chunk.css.map": "/static/css/main.847a216f.chunk.css.map"
+    "main.css": "/Radiative-Capture-Calculator/static/css/main.847a216f.chunk.css",
+    "main.js": "/Radiative-Capture-Calculator/static/js/main.e3251cce.chunk.js",
+    "main.js.map": "/Radiative-Capture-Calculator/static/js/main.e3251cce.chunk.js.map",
+    "runtime~main.js": "/Radiative-Capture-Calculator/static/js/runtime~main.3d80a554.js",
+    "runtime~main.js.map": "/Radiative-Capture-Calculator/static/js/runtime~main.3d80a554.js.map",
+    "static/css/2.5a2f7233.chunk.css": "/Radiative-Capture-Calculator/static/css/2.5a2f7233.chunk.css",
+    "static/js/2.071915cc.chunk.js": "/Radiative-Capture-Calculator/static/js/2.071915cc.chunk.js",
+    "static/js/2.071915cc.chunk.js.map": "/Radiative-Capture-Calculator/static/js/2.071915cc.chunk.js.map",
+    "index.html": "/Radiative-Capture-Calculator/index.html",
+    "precache-manifest.0f3046579a91c4f4362c077c85ea3fae.js": "/Radiative-Capture-Calculator/precache-manifest.0f3046579a91c4f4362c077c85ea3fae.js",
+    "service-worker.js": "/Radiative-Capture-Calculator/service-worker.js",
+    "static/css/2.5a2f7233.chunk.css.map": "/Radiative-Capture-Calculator/static/css/2.5a2f7233.chunk.css.map",
+    "static/css/main.847a216f.chunk.css.map": "/Radiative-Capture-Calculator/static/css/main.847a216f.chunk.css.map"
   }
 }
