@@ -1,6 +1,7 @@
 import React from 'react';
 import { XYPlot, XAxis, YAxis, HorizontalGridLines, VerticalGridLines, LineSeries, MarkSeriesCanvas, DiscreteColorLegend, Hint } from 'react-vis';
 
+// import css
 import './Graph.scss';
 import '../../node_modules/react-vis/dist/style.css';
 

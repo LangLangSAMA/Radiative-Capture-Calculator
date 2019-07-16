@@ -54,7 +54,7 @@ const TableHeading = (props) => {
                     {
                         item.unit &&
                         <label className="unit-label">
-                            {"(" + item.unit + ")"}
+                            {`(${item.unit})`}
                         </label>
                     }
                 </th>

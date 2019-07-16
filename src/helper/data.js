@@ -4,13 +4,11 @@ const data = {
             {
                 label: "Tlab",
                 name: "t_lab",
-                // texLabel: true,
                 unit: "MeV",
             },
             {
                 label: "Vel-squared",
                 name: "vel_sq",
-                // texLabel: true,
                 unit: "MeV/u",
             },
             {

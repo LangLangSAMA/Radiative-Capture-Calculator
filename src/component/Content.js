@@ -7,7 +7,6 @@ import Graph from "./Graph";
 
 // import data
 import data from "../helper/data";
-// import { logicJS } from "../helper/graphLogic";
 import { computeResult, computeMaxAngleData } from "../helper/compute";
 
 // import css
@@ -27,6 +26,7 @@ class Content extends React.Component {
             pressure: 5,
             stopping_power: "",
 
+            // e_res vs max_angle data
             max_angle_data: [],
             max_value: "",
             min_value: ""
@@ -39,7 +39,6 @@ class Content extends React.Component {
         const name = target.name;
         const value = target.value;
 
-        // TODO:: Update Regular Expression Check
         this.setState({
             [name]: value
         })
@@ -63,6 +62,7 @@ class Content extends React.Component {
 
     render() {
 
+        // Deconstruct all the data in state
         const {
             beam_a,
             beam_z,
@@ -80,6 +80,7 @@ class Content extends React.Component {
 
         this.result = computeResult(this.state);
 
+        // Deconstruct all the results
         const {
             beam,
             target,
@@ -88,6 +89,7 @@ class Content extends React.Component {
             kinematics,
         } = this.result;
 
+        // Construct params for forms
         const reaction_params = {
             beam_a: beam_a,
             beam_z: beam_z,

@@ -434,7 +434,7 @@ function computeDeltaEnergyPositive(recoil_t_high, recoil_t_low) {
 }
 
 // ------------------------------------Graph Data Calculation------------------------------------
-// section functions used for graph
+// functions used for graph
 
 function computeMaxAngleData(beam, target, recoil) {
     var i, start = 10, end = 200, data = [];

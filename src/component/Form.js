@@ -39,6 +39,7 @@ class FormField extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            // determine if the column has value
             active: this.props.value ? true : false
         };
     }
@@ -73,6 +74,7 @@ class FormField extends React.Component {
 
         let fieldClassName = "field-container";
 
+        // Add error class if the required field is empty
         switch (required) {
             case "number":
                 if (isNaN(value)) {
@@ -83,6 +85,8 @@ class FormField extends React.Component {
                 break;
         }
 
+        // Add disabled class if the field is disabled,
+        // Otherwise, check if it is active
         if (disabled) {
             fieldClassName += " disabled";
         } else {
@@ -97,6 +101,7 @@ class FormField extends React.Component {
                 <div className="field">
                     {
                         (name === "physics_notation") ?
+                        // Use MathJax for physics notation of atoms
                         <label className="field-box">
                             <MathJax.Context input='ascii'>
                                 <MathJax.Node>{value}</MathJax.Node>
