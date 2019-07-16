@@ -2,7 +2,7 @@
     "name": "radiative_capture_calculator",
     "version": "0.1.0",
     "license": "MIT",
-    "homepage": "http://dragon.triumf.com/",
+    "homepage": "http://dragon.radiativecalculator.com/",
     "devDependencies": {
         "gh-pages": "^2.0.1",
         "prettier": "1.17.0",
