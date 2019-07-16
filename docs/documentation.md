@@ -16,7 +16,9 @@
     ├── LICENSE
     └── README.md
 
-    This project uses `gh-pages` npm libraries to host the page on github. React Library is used to build and render front-end webpages and scss files are used to customize styles on the pages.
+    This project uses `gh-pages` npm libraries to host the page on github.
+    React Library is used to build and render front-end webpages.
+    SCSS files are used to customize styles on the pages.
 
 ### Component Structure
     .
