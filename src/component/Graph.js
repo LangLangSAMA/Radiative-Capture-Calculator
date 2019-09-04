@@ -55,7 +55,7 @@ export default class Graph extends React.Component {
         const isValid = Object.keys(data).length !== 0;
 
         return (
-            <div className="graph-wrapper">
+            <div className="graph-wrapper half-width m-r-20 m-b-20">
                 <div className="header-wrapper m-b-15">
                     <h2 className="graph-title">
                         {title}
@@ -155,7 +155,7 @@ class LineGraph extends React.Component {
             style: {
                 pointerEvents: 'none'
             },
-            data: [{x: e_res, y: max_angle}]
+            data: [{ x: e_res, y: max_angle }]
         }
 
         const ITEMS = [

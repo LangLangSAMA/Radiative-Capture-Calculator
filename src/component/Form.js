@@ -43,7 +43,7 @@ class FormField extends React.Component {
             active: this.props.value ? true : false
         };
     }
-    
+
     fieldOnFocus = () => {
         this.setState({
             active: true
@@ -101,22 +101,22 @@ class FormField extends React.Component {
                 <div className="field">
                     {
                         (name === "physics_notation") ?
-                        // Use MathJax for physics notation of atoms
-                        <label className="field-box">
-                            <MathJax.Context input='ascii'>
-                                <MathJax.Node>{value}</MathJax.Node>
-                            </MathJax.Context>
-                        </label>
-                        :
-                        <input className="field-box"
-                            type="text"
-                            name={name}
-                            value={value}
-                            disabled={disabled}
-                            onChange={fieldOnChange}
-                            onFocus={this.fieldOnFocus}
-                            onBlur={this.fieldOnBlur}
-                        />
+                            // Use MathJax for physics notation of atoms
+                            <label className="field-box">
+                                <MathJax.Context input='ascii'>
+                                    <MathJax.Node>{value}</MathJax.Node>
+                                </MathJax.Context>
+                            </label>
+                            :
+                            <input className="field-box"
+                                type="text"
+                                name={name}
+                                value={value}
+                                disabled={disabled}
+                                onChange={fieldOnChange}
+                                onFocus={this.fieldOnFocus}
+                                onBlur={this.fieldOnBlur}
+                            />
                     }
                     {
                         unit &&
@@ -128,15 +128,15 @@ class FormField extends React.Component {
                     }
                     {
                         texLabel ?
-                        <label className="field-label">
-                            <MathJax.Context input='ascii'>
-                                <MathJax.Node>{label}</MathJax.Node>
-                            </MathJax.Context>
-                        </label>
-                        :
-                        <label className="field-label">
-                            {label}
-                        </label>
+                            <label className="field-label">
+                                <MathJax.Context input='ascii'>
+                                    <MathJax.Node>{label}</MathJax.Node>
+                                </MathJax.Context>
+                            </label>
+                            :
+                            <label className="field-label">
+                                {label}
+                            </label>
                     }
                 </div>
             </div>

@@ -1,0 +1,112 @@
+.recoil-separator-wrapper {
+    display: inline-block;
+    vertical-align: top;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    font-size: 14px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    .header-wrapper {
+        position: relative;
+
+        .title {
+            text-align: center;
+            margin: 0;
+        }
+    }
+
+    .left-control-panel {
+        width: 350px;
+        padding-left: 25px;
+        padding-right: 25px;
+        display: inline-flex;
+        flex-direction: column;
+
+        .field-container {
+            position: relative;
+            width: 300px;
+            height: 55px;
+            margin-bottom: 20px;
+            line-height: 54px;
+            border: 2px solid #f0f0f0;
+            display: flex;
+            justify-content: space-between;
+
+            &.active {
+                .field {
+                    .field-label {
+                        font-size: 12px;
+                        height: 20x;
+                        line-height: 20px;
+
+                        span {
+                            font-size: 14px !important;
+                            font-family: 'Times New Roman', Times, serif;
+                        }
+
+                        &::after {
+                            width: 8px;
+                            height: 8px;
+                        }
+                    }
+                }
+            }
+
+            &.input {
+                .field {
+                    .field-label {
+                        &::after {
+                            display: inline-block;
+                        }
+                    }
+                }
+            }
+
+            .field {
+                margin-left: 20px;
+                margin-right: 20px;
+                height: 100%;
+                flex: auto;
+                display: flex;
+
+                .field-box {
+                    flex: auto;
+                    font-size: 16px;
+                    color: rgb(8, 8, 10);
+                    text-align: right;
+                    height: 100%;
+                    border: 0;
+                }
+
+                .field-label {
+                    color: darkslateblue;
+                    position: absolute;
+                    margin-bottom: 0;
+                    transition: all .2s ease;
+
+                    &::after {
+                        content: "\A";
+                        margin-left: 5px;
+                        width: 10px;
+                        height: 10px;
+                        border-radius: 50%;
+                        background: darkslateblue;
+                        display: none;
+                        transition: all .2s ease;
+                    }
+
+                    span {
+                        font-size: 16px !important;
+                        font-family: 'Times New Roman', Times, serif;
+                    }
+                }
+            }
+        }
+
+        .md1-calibration {
+            width: 100%;
+        }
+    }
+}

@@ -2,7 +2,7 @@
     display: inline-block;
     vertical-align: top;
     border-radius: 5px;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     font-size: 14px;
     padding-top: 10px;
 
@@ -24,10 +24,12 @@
                     font-size: 12px;
                     height: 20x;
                     line-height: 20px;
+
                     span {
                         font-size: 14px !important;
                         font-family: 'Times New Roman', Times, serif;
                     }
+
                     &::after {
                         width: 8px;
                         height: 8px;
@@ -53,6 +55,7 @@
                     cursor: not-allowed;
                     color: #444;
                 }
+
                 .field-label {
                     color: #444;
                 }
@@ -63,6 +66,7 @@
             .field {
                 .field-label {
                     color: red;
+
                     &::after {
                         background: red;
                     }

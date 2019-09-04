@@ -9,7 +9,7 @@ const FormDisplay = (props) => {
             <h2 className="form-title">
                 {props.title}
             </h2>
-            <FormTableList FormRowList={props.FormRowList} valueList={props.valueList}/>
+            <FormTableList FormRowList={props.FormRowList} valueList={props.valueList} />
         </form>
     );
 }

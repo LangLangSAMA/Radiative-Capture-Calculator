@@ -1,0 +1,87 @@
+.graph-kinematics-wrapper {
+    display: inline-block;
+    vertical-align: top;
+    width: 500px;
+    height: 500px;
+    border-radius: 5px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    font-size: 14px;
+    padding-top: 10px;
+
+    .header-wrapper {
+        position: relative;
+
+        .graph-title {
+            text-align: center;
+            margin: 0;
+        }
+    }
+
+    .graph-kinematics {
+        width: 500px;
+        height: 420px;
+        padding-top: 20px;
+        margin: auto;
+        position: relative;
+        font-size: 12px;
+
+        .kinematics-image {
+            width: 100%;
+            height: 100%;
+        }
+
+        .beam-mass {
+            display: inline-block;
+            position: absolute;
+            margin: 0;
+            top: 25px;
+            left: 65px;
+            color: red;
+        }
+
+        .target-mass {
+            display: inline-block;
+            position: absolute;
+            margin: 0;
+            top: 40px;
+            right: 145px;
+            color: red;
+        }
+
+        .kinematics-vector {
+            display: inline-block;
+            position: absolute;
+            margin: 0;
+            top: 85px;
+            left: 120px;
+            color: red;
+        }
+
+        .e-res {
+            display: inline-block;
+            position: absolute;
+            margin: 0;
+            top: 110px;
+            left: 200px;
+            color: red;
+        }
+
+        .velocity-cm {
+            display: inline-block;
+            position: absolute;
+            margin: 0;
+            left: 75px;
+            bottom: 65px;
+            color: red;
+        }
+
+        .max-angle {
+            display: inline-block;
+            position: absolute;
+            margin: 0;
+            right: 105px;
+            bottom: 45px;
+            color: red;
+        }
+    }
+}

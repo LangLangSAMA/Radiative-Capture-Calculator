@@ -7,9 +7,9 @@ const data = {
                 unit: "MeV",
             },
             {
-                label: "Vel-squared",
+                label: "Half Vel-squared",
                 name: "vel_sq",
-                unit: "MeV/u",
+                unit: "MeV/a.m.u",
             },
             {
                 label: "Elab",
@@ -163,6 +163,12 @@ const data = {
         },
         {
             label: "Mass",
+            name: "mass_amu",
+            unit: "text(amu)",
+            disabled: true
+        },
+        {
+            label: "Mass",
             name: "mass",
             unit: "text(MeV)",
             disabled: true
@@ -177,6 +183,12 @@ const data = {
         {
             label: "Symbol",
             name: "physics_notation",
+            disabled: true
+        },
+        {
+            label: "Mass",
+            name: "mass_amu",
+            unit: "text(amu)",
             disabled: true
         },
         {
@@ -199,6 +211,12 @@ const data = {
         },
         {
             label: "Mass",
+            name: "mass_amu",
+            unit: "text(amu)",
+            disabled: true
+        },
+        {
+            label: "Mass",
             name: "mass",
             unit: "text(MeV)",
             disabled: true
@@ -216,6 +234,7 @@ const data = {
         "physics_notation": "",
         "atomic_number": "",
         "mass_number": "",
+        "mass_amu": "",
         "mass": ""
     },
     DefaultRecoilAtom: {
@@ -224,6 +243,7 @@ const data = {
         "physics_notation": "",    
         "atomic_number": "",
         "mass_number": "",
+        "mass_amu": "",
         "mass": "",
         "q_val": ""
     },

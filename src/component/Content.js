@@ -4,6 +4,8 @@ import React from "react";
 import Form from "./Form";
 import FormDisplay from "./FormDisplay";
 import Graph from "./Graph";
+import GraphKinematics from "./GraphKinematics";
+import RecoilSeparator from "./RecoilSeparator";
 
 // import data
 import data from "../helper/data";
@@ -17,7 +19,7 @@ class Content extends React.Component {
         super(props);
         this.state = {
             // input_params
-            beam_a: 22,
+            beam_a: 24,
             beam_z: 10,
             target_a: 1,
             target_z: 1,
@@ -167,6 +169,16 @@ class Content extends React.Component {
                         e_res={e_res ? e_res : 0}
                         max_angle={kinematics.max_angle ? kinematics.max_angle : 0}
                         getMaxAngleData={this.getMaxAngleData}
+                    />
+                    <GraphKinematics 
+                        title="Simplified Schematic of Kinematics"
+                        beam={beam}
+                        target={target}
+                        kinematics={kinematics}
+                        e_res={e_res}
+                    />
+                    <RecoilSeparator
+                        title="Dragon Recoil Seperator"
                     />
                 </div>
             </div>
