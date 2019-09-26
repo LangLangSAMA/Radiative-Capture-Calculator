@@ -1,5 +1,6 @@
 import elements from './elementsAndIsotopes';
 import data from './data';
+import Big from "big.js";
 
 const isotopes = getElementsObject();
 const amu = data.atomic_mass_unit;
@@ -30,8 +31,8 @@ function getIsotopeObject(mass_number, atomic_number) {
                     "physics_notation": `text(${atom.symbol})_${atom.number}^${mass_number}`,
                     "atomic_number": atom.number,
                     "mass_number": mass_number,
-                    "mass": i.mass * amu,
-                    "mass_amu": i.mass
+                    "mass": new Big(i.mass).times(amu),
+                    "mass_amu": new Big(i.mass)
                 }
             }
         })

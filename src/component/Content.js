@@ -27,6 +27,7 @@ class Content extends React.Component {
             w_g: 1,
             pressure: 5,
             stopping_power: "",
+            csf: "1",
 
             // e_res vs max_angle data
             max_angle_data: [],
@@ -74,6 +75,7 @@ class Content extends React.Component {
             w_g,
             pressure,
             stopping_power,
+            csf,
 
             max_angle_data,
             max_value,
@@ -89,6 +91,7 @@ class Content extends React.Component {
             recoil,
             resonance,
             kinematics,
+            separator,
         } = this.result;
 
         // Construct params for forms
@@ -111,7 +114,7 @@ class Content extends React.Component {
         }
 
         // For Test Only
-        // console.log(this.state);
+        // console.log(this.result);
 
         return (
             <div className="component-content">
@@ -178,7 +181,11 @@ class Content extends React.Component {
                         e_res={e_res}
                     />
                     <RecoilSeparator
-                        title="Dragon Recoil Seperator"
+                        title="Dragon Recoil Separator"
+                        SeparatorRow={data.SeparatorRow}
+                        csf={csf}
+                        separator={separator}
+                        inputOnChange={this.inputOnChange}
                     />
                 </div>
             </div>

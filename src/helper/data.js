@@ -228,6 +228,11 @@ const data = {
             disabled: true
         }
     ],
+    SeparatorRow: {
+        label: "CSF",
+        name: "csf",
+        disabled: false
+    },
     DefaultAtom: {
         "name": "",
         "symbol": "",
@@ -253,10 +258,69 @@ const data = {
         "w_g": "",
     },
     DefaultKinematics: {
-        "reduced_mass_amu": "",
         "reduced_mass_mev": "",
-        "t_lab": ""
+        "reduced_mass_amu": "",
+        "t_lab": "",
+        "vel_sq": "",
+        "e_lab": "",
+        "p_lab": "",
+        "e_comp": "",
+        "t_comp": "",
+        "gamma_cm": "",
+        "velocity_cm": "",
+        "recoil_p": "",
+        "recoil_v": "",
+        "max_angle": "",
+        "recoil_e": "",
+        "recoil_e_neg": "",
+        "recoil_e_zero": "",
+        "recoil_e_pos": "",
+        "recoil_t_neg": "",
+        "recoil_t_zero": "",
+        "recoil_t_pos": "",
+        "delta_e_neg": "",
+        "delta_e_pos": ""
+    },
+    DefaultSeparator: {
+        "MD1": "",
+        "MD2": "",
+        "Q1": "",
+        "Q2": "",
+        "Q3": "",
+        "Q4": "",
+        "Q5": "",
+        "Q6": "",
+        "Q7": "",
+        "Q8": "",
+        "Q9": "",
+        "Q10": "",
+        "ED1_beam": "",
+        "ED2_beam": "",
+        "ED1_recoil": "",
+        "ED2_recoil": "",
+        "ToF_beam": "",
+        "ToF_recoil": "",
+        "MCP_beam": "",
+        "MCP_recoil": ""
+    },
+    MagneticFieldTable: {
+        "Q1": 0.709,
+        "Q2": 0.677,
+        "MD1": 1,
+        "Q3": 0.553,
+        "Q4": 0.735,
+        "Q5": 0.381,
+        "Q6": 0.366,
+        "Q7": 0.512,
+        "MD2": 1.23,
+        "Q8": 0.387,
+        "Q9": 0.238,
+        "Q10": 0.266
     },
     atomic_mass_unit: 931.494,
+    c: 299792458,
+    magnet_const: 48.15,
+    dragon_length: 20.7,
+    mcp_distance: 0.59
 }
 export default data;
