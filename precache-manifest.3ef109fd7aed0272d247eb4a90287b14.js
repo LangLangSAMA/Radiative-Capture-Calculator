@@ -1,22 +1,22 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "5bf254d86d07e670b795d5156f1f09e7",
+    "revision": "48b49cf123194863b12f03fa4f3d20cb",
     "url": "/Radiative-Capture-Calculator/index.html"
   },
   {
-    "revision": "f43022217368622de567",
+    "revision": "12a99b237616e1c2485e",
     "url": "/Radiative-Capture-Calculator/static/css/2.5a2f7233.chunk.css"
   },
   {
-    "revision": "7f3b7f9c4749c86d0c0b",
-    "url": "/Radiative-Capture-Calculator/static/css/main.847a216f.chunk.css"
+    "revision": "a5c060118719e0a1e235",
+    "url": "/Radiative-Capture-Calculator/static/css/main.6da655d7.chunk.css"
   },
   {
-    "revision": "f43022217368622de567",
+    "revision": "12a99b237616e1c2485e",
     "url": "/Radiative-Capture-Calculator/static/js/2.071915cc.chunk.js"
   },
   {
-    "revision": "7f3b7f9c4749c86d0c0b",
+    "revision": "a5c060118719e0a1e235",
     "url": "/Radiative-Capture-Calculator/static/js/main.e3251cce.chunk.js"
   },
   {
