@@ -20,16 +20,14 @@ export default class RecoilSeparator extends React.Component {
 
     inputOnChange = (e) => {
         const target = e.target;
-        const name = target.name;
         const value = target.value;
 
         this.setState({
-            [name]: value
+            value: value
         })
     }
 
     fieldOnFocus = () => {
-        console.log("hi");
         this.setState({
             active: true
         })
