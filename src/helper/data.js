@@ -229,7 +229,7 @@ const data = {
         }
     ],
     SeparatorRow: {
-        label: "CSF",
+        label: "Tuned Charge State",
         name: "csf",
         disabled: false
     },
@@ -245,7 +245,7 @@ const data = {
     DefaultRecoilAtom: {
         "name": "",
         "symbol": "",
-        "physics_notation": "",    
+        "physics_notation": "",
         "atomic_number": "",
         "mass_number": "",
         "mass_amu": "",

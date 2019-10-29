@@ -9,7 +9,8 @@ import RecoilSeparator from "./RecoilSeparator";
 
 // import data
 import data from "../helper/data";
-import { computeResult, computeMaxAngleData } from "../helper/compute";
+import { computeResult } from "../helper/compute";
+import { computeMaxAngleData } from "../helper/computeAngleData"
 
 // import css
 import "./Content.scss";
@@ -19,15 +20,15 @@ class Content extends React.Component {
         super(props);
         this.state = {
             // input_params
-            beam_a: 24,
-            beam_z: 10,
+            beam_a: 21,
+            beam_z: 11,
             target_a: 1,
             target_z: 1,
             e_res: 1,
             w_g: 1,
             pressure: 5,
             stopping_power: "",
-            csf: "1",
+            csf: "6",
 
             // e_res vs max_angle data
             max_angle_data: [],
@@ -173,7 +174,7 @@ class Content extends React.Component {
                         max_angle={kinematics.max_angle ? kinematics.max_angle : 0}
                         getMaxAngleData={this.getMaxAngleData}
                     />
-                    <GraphKinematics 
+                    <GraphKinematics
                         title="Simplified Schematic of Kinematics"
                         beam={beam}
                         target={target}
