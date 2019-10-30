@@ -50,7 +50,7 @@ export default class GraphKinematics extends React.Component {
                         velocity_cm && <p className="velocity-cm">{`${velocity_cm} c`}</p>
                     }
                     {
-                        max_angle && <p className="max-angle">{`${max_angle} rad`}</p>
+                        max_angle && <p className="max-angle">{`${max_angle} mrad`}</p>
                     }
                 </div>
             </div>

@@ -1,3 +1,5 @@
+import Big from "big.js";
+
 // ------------------------------------Convertion Function------------------------------------
 // Convert variable type
 
@@ -17,8 +19,24 @@ function valueFormatter(val, field, entry) {
         case "separator":
             val = separatorFormatter(val, entry);
             break;
+        case "kinematics":
+            val = kinematicsFormatter(val, entry);
+            break;
         default:
             val = formatConvertion(val, 4, 3);
+            break;
+    }
+    return val;
+}
+
+function kinematicsFormatter(val, entry) {
+    switch (entry) {
+        case "max_angle":
+            val = new Big(val);
+            val = formatConvertion(val.times(Math.pow(10, 3)), 3, 3);
+            break;
+        default:
+            val = formatConvertion(val, 2, 3);
             break;
     }
     return val;
