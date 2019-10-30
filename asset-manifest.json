@@ -1,20 +1,27 @@
 {
   "files": {
-    "main.css": "/Radiative-Capture-Calculator/static/css/main.6a8b4288.chunk.css",
-    "main.js": "/Radiative-Capture-Calculator/static/js/main.0371c9a1.chunk.js",
-    "main.js.map": "/Radiative-Capture-Calculator/static/js/main.0371c9a1.chunk.js.map",
-    "runtime~main.js": "/Radiative-Capture-Calculator/static/js/runtime~main.3d80a554.js",
-    "runtime~main.js.map": "/Radiative-Capture-Calculator/static/js/runtime~main.3d80a554.js.map",
+    "main.css": "/Radiative-Capture-Calculator/static/css/main.5d755326.chunk.css",
+    "main.js": "/Radiative-Capture-Calculator/static/js/main.fe5d6012.chunk.js",
+    "main.js.map": "/Radiative-Capture-Calculator/static/js/main.fe5d6012.chunk.js.map",
+    "runtime-main.js": "/Radiative-Capture-Calculator/static/js/runtime-main.709760a3.js",
+    "runtime-main.js.map": "/Radiative-Capture-Calculator/static/js/runtime-main.709760a3.js.map",
     "static/css/2.5a2f7233.chunk.css": "/Radiative-Capture-Calculator/static/css/2.5a2f7233.chunk.css",
-    "static/js/2.87f431b2.chunk.js": "/Radiative-Capture-Calculator/static/js/2.87f431b2.chunk.js",
-    "static/js/2.87f431b2.chunk.js.map": "/Radiative-Capture-Calculator/static/js/2.87f431b2.chunk.js.map",
+    "static/js/2.2200a623.chunk.js": "/Radiative-Capture-Calculator/static/js/2.2200a623.chunk.js",
+    "static/js/2.2200a623.chunk.js.map": "/Radiative-Capture-Calculator/static/js/2.2200a623.chunk.js.map",
     "index.html": "/Radiative-Capture-Calculator/index.html",
-    "precache-manifest.756d7e6ee91b5dfcb2ffdea3bd949cb6.js": "/Radiative-Capture-Calculator/precache-manifest.756d7e6ee91b5dfcb2ffdea3bd949cb6.js",
+    "precache-manifest.7ea67795dc8a00d5d3bf77d8ac7ba55e.js": "/Radiative-Capture-Calculator/precache-manifest.7ea67795dc8a00d5d3bf77d8ac7ba55e.js",
     "service-worker.js": "/Radiative-Capture-Calculator/service-worker.js",
     "static/css/2.5a2f7233.chunk.css.map": "/Radiative-Capture-Calculator/static/css/2.5a2f7233.chunk.css.map",
-    "static/css/main.6a8b4288.chunk.css.map": "/Radiative-Capture-Calculator/static/css/main.6a8b4288.chunk.css.map",
+    "static/css/main.5d755326.chunk.css.map": "/Radiative-Capture-Calculator/static/css/main.5d755326.chunk.css.map",
     "static/media/kinematics_image.png": "/Radiative-Capture-Calculator/static/media/kinematics_image.194e4cd4.png",
     "static/media/md1_calibration.png": "/Radiative-Capture-Calculator/static/media/md1_calibration.3069677c.png",
     "static/media/recoil_separator.png": "/Radiative-Capture-Calculator/static/media/recoil_separator.1534cc84.png"
-  }
+  },
+  "entrypoints": [
+    "static/js/runtime-main.709760a3.js",
+    "static/css/2.5a2f7233.chunk.css",
+    "static/js/2.2200a623.chunk.js",
+    "static/css/main.5d755326.chunk.css",
+    "static/js/main.fe5d6012.chunk.js"
+  ]
 }
