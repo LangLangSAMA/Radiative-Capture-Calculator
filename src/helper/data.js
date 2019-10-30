@@ -129,8 +129,7 @@ const data = {
             disabled: true
         },
         {
-            label: "omegagamma",
-            texLabel: true,
+            label: "\u03C9\u03B3",
             name: "w_g",
             unit: "text(eV)",
             required: "number"

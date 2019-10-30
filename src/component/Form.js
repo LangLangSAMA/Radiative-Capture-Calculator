@@ -69,7 +69,7 @@ class FormField extends React.Component {
         } = this.props;
 
         const {
-            label, texLabel, name, unit, disabled, required
+            label, name, unit, disabled, required
         } = item;
 
         let fieldClassName = "field-container";
@@ -127,16 +127,9 @@ class FormField extends React.Component {
                         </label>
                     }
                     {
-                        texLabel ?
-                            <label className="field-label">
-                                <MathJax.Context input='ascii'>
-                                    <MathJax.Node>{label}</MathJax.Node>
-                                </MathJax.Context>
-                            </label>
-                            :
-                            <label className="field-label">
-                                {label}
-                            </label>
+                        <label className="field-label">
+                            {label}
+                        </label>
                     }
                 </div>
             </div>
