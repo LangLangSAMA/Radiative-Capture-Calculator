@@ -36,7 +36,7 @@ function kinematicsFormatter(val, entry) {
             val = formatConvertion(val.times(Math.pow(10, 3)), 3, 3);
             break;
         default:
-            val = formatConvertion(val, 2, 3);
+            val = formatConvertion(val, 4, 3);
             break;
     }
     return val;
