@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Radiative-Capture-Calculator/precache-manifest.7ea67795dc8a00d5d3bf77d8ac7ba55e.js"
+  "/Radiative-Capture-Calculator/precache-manifest.c2a9d79f9f8a43501c6d54dc1acbd579.js"
 );
 
 self.addEventListener('message', (event) => {
