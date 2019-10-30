@@ -128,16 +128,16 @@ export default class RecoilSeparator extends React.Component {
                         ED2_recoil && <p className="ed2-recoil">{`Recoil: ${ED2_recoil} kV`}</p>
                     }
                     {
-                        ToF_beam && <p className="tof-beam">{`ToF Beam: ${ToF_beam} s`}</p>
+                        ToF_beam && <p className="tof-beam">{`ToF Beam: ${ToF_beam} \u03BCs`}</p>
                     }
                     {
-                        ToF_recoil && <p className="tof-recoil">{`ToF Recoil: ${ToF_recoil} s`}</p>
+                        ToF_recoil && <p className="tof-recoil">{`ToF Recoil: ${ToF_recoil} \u03BCs`}</p>
                     }
                     {
-                        MCP_beam && <p className="mcp-beam">{`MCP Beam: ${MCP_beam} s`}</p>
+                        MCP_beam && <p className="mcp-beam">{`MCP Beam: ${MCP_beam} ns`}</p>
                     }
                     {
-                        MCP_recoil && <p className="mcp-recoil">{`MCP Beam: ${MCP_recoil} s`}</p>
+                        MCP_recoil && <p className="mcp-recoil">{`MCP Beam: ${MCP_recoil} ns`}</p>
                     }
                     {
                         Q1 && <p className="q1">{`Q1: ${Q1} G`}</p>
