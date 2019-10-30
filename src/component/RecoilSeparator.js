@@ -137,7 +137,7 @@ export default class RecoilSeparator extends React.Component {
                         MCP_beam && <p className="mcp-beam">{`MCP Beam: ${MCP_beam} ns`}</p>
                     }
                     {
-                        MCP_recoil && <p className="mcp-recoil">{`MCP Beam: ${MCP_recoil} ns`}</p>
+                        MCP_recoil && <p className="mcp-recoil">{`MCP Recoil: ${MCP_recoil} ns`}</p>
                     }
                     {
                         Q1 && <p className="q1">{`Q1: ${Q1} G`}</p>
