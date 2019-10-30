@@ -7,11 +7,11 @@ Online Web Application hosted on github, used to estimating and measuring radiat
 Install
 ---
 
-`npm install`
+`yarn install`
 
 
 
 Usage
 ---
 
-`npm start`
+`yarn start`
