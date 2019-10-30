@@ -15,3 +15,10 @@ Usage
 ---
 
 `yarn start`
+
+
+
+Deploy
+---
+
+`yarn deploy`
